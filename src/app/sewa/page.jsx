@@ -5,56 +5,9 @@ import { useEffect, useMemo, useState } from "react";
 import MainLayout from "../../components/layouts/main-layout.jsx";
 
 import { iPhones } from "../../data/iphones.js";
-import { store } from "../../data/store.js";
+import { store, termsData } from "../../data/store.js";
 
-const STORAGE_KEY = "irent-rental-items";
-
-const termsData = [
-  {
-    id: 1,
-    title: "1. Mengisi Form",
-    description: "Mengisi form yang kami kirim.",
-  },
-  {
-    id: 2,
-    title: "2. Ketentuan iCloud",
-    description: "iCloud dari kami dan dilarang log out icloud.",
-  },
-  {
-    id: 3,
-    title: "3. List Aplikasi",
-    description:
-      "List aplikasi di form booking yang dibutuhkan sebelum pengambilan karena tidak bisa download aplikasi saat iphone sudah diambil.",
-  },
-  {
-    id: 4,
-    title: "4. Penghapusan Data",
-    description:
-      "Sebelum pengembalian harap menghapus data yang ada atau belum sempat pindah bisa kami bantu.",
-  },
-  {
-    id: 5,
-    title: "5. Jaminan",
-    description:
-      'Minimal 2 id "YANG KAMI TAHAN & MASIH BERLAKU" wajib ktp dan ditambah dengan sim/stnk/kk/npwp/ktm/kia/kartu pelajar/kartu santri/kis/bpjs.',
-  },
-  {
-    id: 6,
-    title: "6. Hitungan Sewa",
-    description: "Hitungan sewa 6jam, 12jam dan 24jam dihitung dari jam ambil.",
-  },
-  {
-    id: 7,
-    title: "7. Dokumentasi",
-    description: "Bersedia di foto saat pengambilan iPhone.",
-  },
-  {
-    id: 8,
-    title: "8. Tanggung Jawab Unit",
-    description:
-      "Setelah pengambilan iphone sepenuhnya tanggung jawab penyewa, jika ada kerusakan saat pengembalian tanggung jawab penyewa.",
-  },
-];
+const STORAGE_KEY = store.name;
 
 function formatPrice(price) {
   return `Rp${price.toLocaleString("id-ID")}`;
@@ -76,7 +29,7 @@ function getPresetDurations(product) {
   if (product.price) {
     return [24];
   }
-  return [6];
+  return [6]; // <-- Masih hardcoded default 6 jam
 }
 
 function getPriceInfo(product, duration) {
@@ -109,9 +62,8 @@ export default function RentalPage() {
     whatsapp: "",
     date: "",
     time: "",
-    pickupMethod: "ambil",
+    pickupMethod: "ambil", // <-- Hardcoded default value
     codLocation: "",
-    apps: "",
     note: "",
   });
   const [items, setItems] = useState([]);
@@ -297,9 +249,9 @@ export default function RentalPage() {
 
         const priceInfo = getPriceInfo(product, item.duration);
 
-        return `- ${product.name} — ${getDurationLabel(
-          item,
-        )} — ${priceInfo.label}`;
+        return `- ${product.name} — ${getDurationLabel(item)} — ${
+          priceInfo.label
+        }`;
       })
       .filter(Boolean)
       .join("\n");
@@ -328,9 +280,6 @@ ${form.time}
 
 Metode Pengambilan:
 ${pickupInfo}
-
-Aplikasi yang ingin di-install:
-${form.apps || "-"}
 
 Catatan:
 ${form.note || "-"}
@@ -609,6 +558,7 @@ Mohon konfirmasi ketersediaan unit dan detail penyewaannya.`;
                       onChange={handleFormChange}
                       className="w-full border border-[#101010]/15 rounded-xl px-5 py-3 text-[#101010] outline-none focus:border-[#101010]/40"
                     >
+                      {/* Opsi ini bisa di-mapping dari store.pickupMethods kalau mau dibikin dinamis */}
                       <option value="ambil">Ambil di Tempat</option>
                       <option value="cod">COD</option>
                     </select>
@@ -636,28 +586,6 @@ Mohon konfirmasi ketersediaan unit dan detail penyewaannya.`;
                       />
                     </div>
                   )}
-
-                  {/* APLIKASI */}
-                  <div className="flex flex-col gap-2 lg:col-span-2">
-                    <label htmlFor="apps" className="text-sm text-[#101010]">
-                      Aplikasi yang Ingin Di-install
-                    </label>
-
-                    <textarea
-                      id="apps"
-                      name="apps"
-                      value={form.apps}
-                      onChange={handleFormChange}
-                      placeholder="Contoh: Instagram, WhatsApp, TikTok, CapCut..."
-                      rows={3}
-                      className="w-full border border-[#101010]/15 rounded-xl px-5 py-3 text-black outline-none resize-none focus:border-[#101010]/40"
-                    />
-
-                    <p className="text-[#101010]/50 text-sm">
-                      Tulis aplikasi yang ingin disiapkan sebelum mengambil
-                      iPhone.
-                    </p>
-                  </div>
 
                   {/* CATATAN */}
                   <div className="flex flex-col gap-2 lg:col-span-2">

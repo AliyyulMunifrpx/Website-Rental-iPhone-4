@@ -1,42 +1,9 @@
 import Link from "next/link.js";
 import React from "react";
 import MainLayout from "../../components/layouts/main-layout.jsx";
-import { store } from "../../data/store.js";
+import { store, termsData } from "../../data/store.js";
 import CtaSection from "../../components/home/cta-section.jsx";
 
-// 1. Data array untuk list syarat & ketentuan (Diperbarui sesuai gambar S&K)
-const termsData = [
-  {
-    id: 1,
-    title: "1. Syarat Identitas Utama",
-    description:
-      "Untuk syarat sewa, penyewa wajib meninggalkan 2 Kartu Identitas selama masa sewa. Identitas pertama wajib berupa KTP Asli Fisik (atau KIA Asli Fisik apabila belum punya KTP).",
-  },
-  {
-    id: 2,
-    title: "2. Identitas Pendukung",
-    description:
-      "Sebagai identitas kedua, wajib melampirkan fisik asli dari salah satu dokumen berikut: SIM / KTM / Kartu Pelajar / STNK / BPKB / Akte Kelahiran / Ijazah / Kartu Keluarga.",
-  },
-  {
-    id: 3,
-    title: "3. Validitas & Penjamin",
-    description:
-      "Kami hanya menerima Kartu Identitas fisik asli dan masih berlaku. Jika tidak memenuhi persyaratan, identitas bisa di-mix dengan penjamin lain (pemilik identitas penjamin wajib datang ke store pada saat pengambilan).",
-  },
-  {
-    id: 4,
-    title: "4. Khusus Tipe iPhone 12 Pro ke Atas",
-    description:
-      "Penyewa wajib datang ke store 2 orang dengan membawa identitas masing-masing. Jika datang sendiri, penyewa wajib menjaminkan BPKB atau barang lain, atau bisa melakukan deposit uang senilai 50% dari barang yang disewa.",
-  },
-  {
-    id: 5,
-    title: "5. Khusus Tipe iPhone 14 Pro ke Atas",
-    description:
-      "Penyewa diwajibkan untuk menjaminkan BPKB atau barang lain, atau juga bisa melakukan deposit uang senilai 50% dari barang yang disewa.",
-  },
-];
 
 export const metadata = {
   title: `Syarat & Ketentuan Sewa iPhone`,
