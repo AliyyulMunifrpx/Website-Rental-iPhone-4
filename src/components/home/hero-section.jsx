@@ -23,7 +23,7 @@ export default function HeroSection() {
         </h1>
 
         <p className=" w-fit text-2xl lg:text-5xl bg-gradient-to-r py-2 mt-2 from-[#353535] to-[#0148e4] via-[#fe6101] bg-clip-text text-transparent font-semibold text-center col-end-4">
-          Termurah, Terlengkap, Terbesar{" "}
+          Termurah, Terlengkap, di Jogja
         </p>
 
         <div className="flex mt-8">

@@ -33,12 +33,12 @@ export default function Navbar() {
 
   return (
     <div className="relative w-full h-16 bg-white lg:bg-white/60 backdrop-blur-md px-4 md:px-8 lg:px-16">
-      <div className="absolute left-4 md:left-8 lg:left-16 top-2 flex gap-2 items-center font-bold text-[#101010] text-2xl">
+      <div className="absolute left-4 md:left-8 lg:left-16 top-0 flex gap-2 items-center font-bold text-[#101010] text-2xl">
         <Image
           alt={store.name + "logo"}
-          width={50}
-          height={50}
-          src="/logo.webp"
+          width={70}
+          height={70}
+          src="/assets/logo (2).webp"
         ></Image>
         {/* <Link
           href="/"

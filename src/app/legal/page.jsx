@@ -48,7 +48,7 @@ export default function LegalPage() {
               <div className="flex flex-col gap-4">
                 <div className="relative w-full aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
                   <Image
-                    src="/assets/doc/1.webp" // Ganti dengan path foto aslimu
+                    src="/assets/doc/nib.webp" // Ganti dengan path foto aslimu
                     alt={`Dokumen Legal 1 ${store.name}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -70,7 +70,7 @@ export default function LegalPage() {
               <div className="flex flex-col gap-4">
                 <div className="relative w-full aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
                   <Image
-                    src="/assets/doc/2.webp" // Ganti dengan path foto aslimu
+                    src="/assets/doc/sppp.webp" // Ganti dengan path foto aslimu
                     alt={`Dokumen Legal 2 ${store.name}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
